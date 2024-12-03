@@ -13,9 +13,8 @@ fun main() {
                     return@count true
                 } else {
                     it.forEachIndexed { index, _ ->
-                        val new = it.toMutableList()
-                        new.removeAt(index)
-                        if (isSafe(new)) return@count true
+                        if (isSafe(it.toMutableList().apply { removeAt(index) }))
+                            return@count true
                     }
                     return@count false
                 }
